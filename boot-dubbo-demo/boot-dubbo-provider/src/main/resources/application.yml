@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: boot-dubbo-provider
+
+embedded:
+  zookeeper:
+    port: 2181
+
+dubbo:
+  scan:
+    base-packages: me.cloud.dubbo.provider.service
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
+    file: ${user.home}/.dubbo-cache/${spring.application.name}/dubbo.cache
+project:
+  service:
+    version: 1.0.0
